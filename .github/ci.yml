@@ -16,3 +16,4 @@ jobs:
           ls -al
           whoami
           pwd
+          pwd
