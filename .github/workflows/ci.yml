@@ -14,5 +14,4 @@ jobs:
       - name: Paso Inspeccionar máquina
         run: 
           ls -al
-          whoami
           pwd
