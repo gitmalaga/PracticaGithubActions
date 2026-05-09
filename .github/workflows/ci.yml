@@ -12,6 +12,7 @@ jobs:
 
     steps:
       - name: Paso Inspeccionar máquina
-        run: 
+        run: |
           ls -al
+          whoami
           pwd
