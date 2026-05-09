@@ -3,16 +3,22 @@ name: ci-intergracion continua
 on: 
   push:
     branches: [ main ]
+    paths: [ 'hangman-front/**' ]
   pull_request: 
     branches: [ main ]
+    paths: [ 'hangman-front/**' ]
   
 jobs:
   jobprueba:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Paso Inspeccionar máquina
-        run: 
-          ls -al
-          whoami
-          pwd
+      - name: Paso bajarme cod fuente
+        uses: actions/checkout@v6
+
+      - name: Paso hacer build  test
+        working-directory: ./hangman-front
+        run: |
+          npm ci
+          npm run build
+          npm run test
