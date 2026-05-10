@@ -27,6 +27,6 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           push: true
-          tags: gitmalaga/hangman-front:latest
+          tags: ghcr.io/gitmalaga/hangman-front:latest
           context: ./hangman-front
 
