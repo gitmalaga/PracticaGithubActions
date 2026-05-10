@@ -1,0 +1,32 @@
+name: cd-entrega continua
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  jobentrega:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Paso Bajarme codigo Fuente
+        uses: actions/checkout@v6
+      - name: Paso Aveerigua version
+        run: docker -v
+      - name: Paso Docker login
+        uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Paso Set up Docker Buildx
+        uses: docker/setup-buildx-action@v4
+      - name: Paso Build and push Docker image
+        uses: docker/build-push-action@v7
+        with:
+          push: true
+          tags: gitmalaga/hangman-front:latest
+          context: ./hangman-front
+
