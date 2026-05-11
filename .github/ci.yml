@@ -1,0 +1,19 @@
+name: ci-intergracion continua
+
+on: 
+  push:
+    branches: [ main ]
+  pull_request: 
+    branches: [ main ]
+  
+jobs:
+  jobprueba:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Paso Inspeccionar máquina
+        run: 
+          ls -al
+          whoami
+          pwd
+          pwd
